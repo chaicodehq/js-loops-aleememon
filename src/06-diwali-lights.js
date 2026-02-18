@@ -39,4 +39,83 @@
  */
 export function diwaliLightsPlan(lightStrings, budget) {
   // Your code here
+  if (!Array.isArray(lightStrings) || !Number.isInteger(budget) || budget <= 0) 
+    return { selected: [], totalLength: 0, totalCost: 0 } 
+  const selected = []
+  let totalLength = 0;
+  let totalCost = 0;
+  
+  for (const element of lightStrings) {
+    const color = element.color;
+    const colorLength = element.length;
+    if (color === "golden") {
+      const colorCost = colorLength * 50; 
+      // Adding selected colors lights
+      selected.push({
+        color: color,
+        length: colorLength,
+        cost: colorCost
+      })
+      
+      // Adding total length of lights
+      totalLength += colorLength
+
+      // Adding total cost of lights
+      totalCost += colorCost
+    } else if (color === "multicolor") {
+
+      const colorCost = colorLength * 40; 
+      // Adding selected colors lights
+      selected.push({
+        color: color,
+        length: colorLength,
+        cost: colorCost
+      })
+      
+      // Adding total length of lights
+      totalLength += colorLength
+
+      // Adding total cost of lights
+      totalCost += colorCost
+    } else if (color === "white") {
+      const colorCost = colorLength * 30; 
+      // Adding selected colors lights
+      selected.push({
+        color: color,
+        length: colorLength,
+        cost: colorCost
+      })
+      
+      // Adding total length of lights
+      totalLength += colorLength
+
+      // Adding total cost of lights
+      totalCost += colorCost
+    } else {
+      const colorCost = colorLength * 35; 
+      // Adding selected colors lights
+      selected.push({
+        color: color,
+        length: colorLength,
+        cost: colorCost
+      })
+      
+      // Adding total length of lights
+      totalLength += colorLength
+
+      // Adding total cost of lights
+      totalCost += colorCost
+    }
+  } 
+
+  while(totalCost > budget) {
+    const subtractedLight = selected.pop()
+    totalCost -= subtractedLight.cost;
+    totalLength -= subtractedLight.length
+    totalCost <= budget;
+  }
+
+  return {selected, totalLength, totalCost}
+
+  
 }

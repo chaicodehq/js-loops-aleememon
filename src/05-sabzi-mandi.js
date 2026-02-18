@@ -32,12 +32,12 @@
 export function sabziMandiBill(shoppingList, priceList) {
   if (shoppingList.length === 0 || Object.keys(priceList).length === 0)
     return { items: [], totalBill: 0 };
-  let items = []
+  let items = [];
   let totalBill = 0;
   for (const value of shoppingList) {
     const sabziName = value.name;
     const qty = value.qty;
-    if (!Object.hasOwn(priceList, sabziName)) continue
+    if (!Object.hasOwn(priceList, sabziName)) continue;
 
     const pricePerKg = priceList[sabziName];
 
@@ -50,10 +50,9 @@ export function sabziMandiBill(shoppingList, priceList) {
     items.push({
       name: sabziName,
       qty: qty,
-      cost: itemCost
-    })
-
+      cost: itemCost,
+    });
   }
 
-  return {items, totalBill}
+  return { items, totalBill };
 }

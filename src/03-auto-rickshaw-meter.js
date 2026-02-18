@@ -33,4 +33,21 @@
  */
 export function calculateAutoFare(distance, waitingMinutes = 0) {
   // Your code here
+  if (!(distance > 0) || waitingMinutes < 0) return -1;
+
+  let distanceCeil = Math.ceil(distance);
+  let km = 0;
+  let fairInRupees = 0;
+  let waitingMinsCeil = Math.ceil(waitingMinutes / 2);
+  while (km <= distanceCeil) {
+    if (km === 1) fairInRupees = fairInRupees + 30;
+    if (km >= 2 && km <= 5) fairInRupees = fairInRupees + 15;
+    if (km > 5) fairInRupees = fairInRupees + 10;
+    km++;
+  }
+
+  const waitingCharge = waitingMinsCeil * 5;
+  fairInRupees = fairInRupees + waitingCharge 
+
+  return fairInRupees;
 }
